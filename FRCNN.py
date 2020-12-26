@@ -1139,7 +1139,7 @@ class RoiPoolingConv(tf.keras.layers.Layer):
             h = K.cast(h, 'int32')
 
             # Resized roi of the image to pooling size (7x7)
-            rs = tf.image.resize_images(img[:, y:y+h, x:x+w, :], (self.pool_size, self.pool_size))
+            rs = tf.image.resize(img[:, y:y+h, x:x+w, :], (self.pool_size, self.pool_size))
             outputs.append(rs)
 
         final_output = K.concatenate(outputs, axis=0)
